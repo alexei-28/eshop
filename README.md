@@ -3,6 +3,11 @@
 OTUS: Software architect - eshop
 
 ------------------------------------------------------------------------------------------
+Download abd install Gradle wrapper 7.5.1
+
+ gradle wrapper --gradle-version 7.5.1
+
+------------------------------------------------------------------------------------------
 ## Homework#3:
 
 Microservices:
