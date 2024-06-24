@@ -7,9 +7,19 @@ Course: Software architect
 
 Appliction name: e-shop (online shop)
 
-version: 1.0.1
+version: 1.0.2
 
-port: 8090
+port: 8001
+
+Example to run container from image:
+
+1. Run container from image
+
+ docker run -p 8001:8090 --name container_name image_id
+
+2. Open browser on page:
+
+   http://127.0.0.1:8001
 
 Main app.
 
