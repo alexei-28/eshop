@@ -20,3 +20,8 @@ It is necessary to divide your monolithic application into a group of microservi
 Асинхронное взаимодействие:
 Нужно определить, какие сервисы в вашем приложении, должны работать асинхронно (например, отправка уведомлений).
 Далее необходимо выбрать очередь сообщений и перевести данные сервисы на асинхронное взаимодействие.
+
+------------------------------------------------------------------------------------------
+Docker images on Docker Hub:
+
+https://hub.docker.com/repository/docker/asubscriber/eshop/general
