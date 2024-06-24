@@ -9,17 +9,18 @@ Appliction name: e-shop (online shop)
 
 version: 1.0.2
 
-port: 8001
-
 Example to run container from image:
+1. Create image (in folder /eshop/eshop/) from Dockerfile
+   
+    docker build .
 
-1. Run container from image
+2. Run container from image
 
- docker run -p 8001:8090 --name container_name image_id
+   docker run -p 8091:8090 --name container_name image_id
 
-2. Open browser on page:
+3. Open browser on page:
 
-   http://127.0.0.1:8001
+   http://127.0.0.1:8091
 
 Main app.
 
