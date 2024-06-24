@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${appName}">Category template title</title>
+    <link th:href="@{/public/style.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <h3 th:text="*{title}"/>
+    <form method="post" action="#" th:object="${category}" th:action="@{/category}">
+        <input type="hidden" id="id" th:field="*{id}"/>
+        <input type="text" placeholder="Name" id="name" th:field="*{name}" th:disabled="${isView}"/>
+        <input type="hidden" id="created" th:field="*{created}"/>
+        <textarea placeholder="Description" rows="5" id="description"
+                  th:field="*{description}" th:disabled="${isView}"></textarea>
+        <input th:type="${isView} ? hidden : submit" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>

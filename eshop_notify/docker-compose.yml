@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  server:
+    image: asubscriber/eshop_notify:1.0.0
+    build:
+      context: .
+
+    network_mode: host
+    ports:
+      - 8091:8091

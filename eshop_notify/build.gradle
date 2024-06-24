@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'ru.otus.software_architect'
+version = '1.0.0'
+sourceCompatibility = '1.8'
+
+processResources {
+	filesMatching('application.yml') {
+		expand(project.properties)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'com.google.code.gson:gson:2.7'
+	implementation 'org.apache.activemq:activemq-broker'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-activemq'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
+}
+
+test {
+	useJUnitPlatform()
+}

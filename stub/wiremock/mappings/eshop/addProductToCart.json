@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPattern": ".*/cart/product"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "fixedDelayMilliseconds": 10000,
+    "bodyFileName": "eshop/addProductToCart.json"
+  }
+}

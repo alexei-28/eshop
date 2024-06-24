@@ -1,0 +1,309 @@
+# Help: https://github.com/pashky/restclient.el
+# More examples: https://github.com/pashky/restclient.el/blob/master/examples/httpbin
+# C-c C-v: same as C-c C-c, but doesn't switch focus to other window
+# C-c C-u: copy query under the cursor as a curl command
+
+# Separator between requests is symbol "#"
+# POST works too, entity just goes after an empty line. Same is for PUT.
+#
+# Rest API: https://eredus.md/api/doc
+# Site for testing http request/response: http://httpbin.org/
+#
+# Stub base url: https://ca.qsystemsglobal.com/wiremock/ -> 172.27.203.179:8081
+# Production base url: http://35.205.73.238:7070/
+
+#:BASE_URL = :DEV_BASE_ORDERS_URL3
+:BASE_URL = :STUB_BASE_URL
+:DEV_BASE_URL = http://172.27.202.135:8090
+
+# Service eshop-notification
+:DEV_BASE_NOTIFY_URL = http://172.27.202.135:8091
+:DEV_BASE_NOTIFY_URL2 = http://192.168.0.101:8091
+:DEV_BASE_NOTIFY_URL3 = http://127.0.0.1:8091
+:HEADERS = <<
+Accept: application/json
+Content-Type: application/json
+#
+
+# Service eshop-orders
+:DEV_BASE_ORDERS_URL = http://172.27.202.135:8092
+:DEV_BASE_ORDERS_URL2 = http://192.168.0.101:8092
+:DEV_BASE_ORDERS_URL3 = http://127.0.0.1:8092
+:STUB_BASE_URL3 = http://127.0.0.1:8081
+
+:HEADERS = <<
+Accept: application/json
+Content-Type: application/json
+#
+
+:PRODUCTION_BASE_URL = http://172.27.202.135:8081
+:URL_SUFFIX = /api/v1
+
+# Open index.html
+GET :BASE_URL/
+
+# Open hello.jsp
+GET :BASE_URL/hello
+
+# Get all users as json
+GET :BASE_URL/users
+
+# Get all categories
+GET :BASE_URL/categories
+
+# Get Spring Boot Actuator
+GET :BASE_URL/actuator
+
+
+# ======================[Service Notify by email START]=======================================
+
+# Say hello for service notify
+GET :DEV_BASE_NOTIFY_URL3:URL_SUFFIX/hello
+
+# order create
+POST :DEV_BASE_NOTIFY_URL3:URL_SUFFIX/notifyEmail?emailTo=a_subscriber@mail.ru&action=order_create&orderId=10
+
+# order detete
+POST :DEV_BASE_NOTIFY_URL3:URL_SUFFIX/notifyEmail?emailTo=a_subscriber@mail.ru&action=order_delete&orderId=10
+
+# order update
+POST :DEV_BASE_NOTIFY_URL3:URL_SUFFIX/notifyEmail?emailTo=a_subscriber@mail.ru&action=order_update&orderId=10
+
+# ======================[Service Notify by email END]=======================================
+
+# ======================[Service Orders START]=======================================
+
+# Say hello for service orders
+GET :DEV_BASE_ORDERS_URL3:URL_SUFFIX/hello
+
+# Cart
+
+# Get cart by user name
+GET :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart?user_name=admin@admin.com
+
+# Delete all carts
+DELETE :DEV_BASE_ORDERS_URL3:URL_SUFFIX/carts
+
+# Get all carts
+GET :DEV_BASE_ORDERS_URL3:URL_SUFFIX/carts
+
+# Get cart's details
+GET :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/4
+
+# Delete all products(by product_id) from cart
+DELETE :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/product?cart_id=8&product_id=10
+
+# Delete cart
+DELETE :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/38
+
+# Add product_1 to cart
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/product
+:HEADERS
+{
+  "user_name": "admin@admin.com",
+  "product": {
+    "name": "product name_1",
+    "description": "product description_1",
+    "created": "2020-03-10T20:34:15",
+    "price": 10.0,
+    "currency": "USD",
+    "images": [
+      "some_url1"
+    ]
+  },
+  "quantity": 2
+}
+
+# Update product's quantity in cart
+PUT :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/product?cart_id=38&product_id=40&quantity=0
+
+# Update product's quantity in cart (invalid quantity)
+PUT :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/product?cart_id=19&product_id=21&quantity=0
+
+# Add product_to cart by user_name. If not exist cart -> create new cart
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/product
+:HEADERS
+
+{
+  "user_name": "admin@admin.com",
+  "product": {
+    "name": "product name_2",
+    "description": "product description_2",
+    "created": "2020-03-10T22:34:15",
+    "price": 2.00,
+    "currency": "USD",
+    "images": [
+      "some_url1",
+      "some_url2"
+    ]
+  },
+  "quantity": 2
+}
+
+
+# Add another product to another cart (another user)
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/product
+:HEADERS
+
+{
+  "user_name": "admin2@admin2.com",
+  "product": {
+    "name": "product name for another cart",
+    "description": "product description for another cart",
+    "created": "2020-02-10T22:34:15",
+    "price": 1.00,
+    "currency": "USD",
+    "images": [
+      "some_url"
+    ]
+  },
+  "quantity": 1
+}
+
+# Update another product's quantity in cart
+PUT :DEV_BASE_ORDERS_URL3:URL_SUFFIX/cart/product?cart_id=8&product_id=10&quantity=2
+
+# ======================= Orders =======================
+
+# Get all orders
+GET :DEV_BASE_ORDERS_URL3:URL_SUFFIX/orders
+
+# Delete all orders
+DELETE :DEV_BASE_ORDERS_URL3:URL_SUFFIX/orders
+
+# Delete order
+DELETE :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/49
+
+# Get orders's details
+GET :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/49
+
+# Delete all products(by product_id) from order
+DELETE :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/product?order_id=1&product_id=4
+
+# Create order from whole cart without shipping
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/cart
+:HEADERS
+
+{
+  "cart_id": 46,
+  "order": {
+    "paymentCardNumber": "1111-2222-3333-4444",
+    "promoCode": "ABC"
+  }
+}
+
+# Create order from whole cart with shipping
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/cart
+:HEADERS
+
+{
+  "cart_id": 16,
+  "order": {
+    "paymentCardNumber": "1111-2222-3333-4444",
+    "shipping": {
+      "price": 5.0,
+      "currency" : "USD",
+      "contactName": "Some name here",
+      "address": "Some address here",
+      "address2": "My address 2",
+      "country": "Russia",
+      "city": "Moscow"
+    },
+    "promoCode": "ABC"
+  }
+}
+
+# Create order by product
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/product
+:HEADERS
+
+{
+  "user_name": "admin@admin.com",
+  "paymentCardNumber": "1111-2222-3333-4444",
+  "product": {
+    "name": "product name_2",
+    "description": "product description_2",
+    "created": "2020-03-10T20:34:12",
+    "price": 12.0,
+    "currency": "USD",
+    "images": [
+      "some_url2"
+    ]
+  },
+  "quantity": 2
+}
+
+# Create order by another product
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/product
+:HEADERS
+
+{
+  "user_name": "admin@admin.com",
+  "paymentCardNumber": "1111-2222-3333-4444",
+  "product": {
+    "name": "product name_5",
+    "description": "product description_5",
+    "created": "2020-03-10T20:34:15",
+    "price": 15.0,
+    "currency": "USD",
+    "images": [
+      "some_url5"
+    ]
+  },
+  "quantity": 5
+}
+
+# Update product's quantity in order
+PUT :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/product?order_id=55&product_id=57&quantity=5
+
+# Add shipping information
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/shipping
+:HEADERS
+
+{
+  "user_name": "admin@admin.com",
+  "shipping": {
+    "price": 5.0,
+    "currency" : "USD",
+    "contactName": "John Green",
+    "phone": "+373 22 33 44",
+    "address": "My address",
+    "address2": "My address 2",
+    "country": "USA",
+    "state": "California",
+    "city": "Los Angeles",
+    "zip": "myZip"
+  }
+}
+
+# Update shipping information
+PUT :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/shipping
+:HEADERS
+{
+  "order_id": 49,
+  "shipping": {
+    "price": 54.0,
+    "currency": "USD",
+    "contactName": "Bill Gates",
+    "phone": "+373 22 33 442",
+    "address": "My address2",
+    "address2": "My address 44",
+    "country": "USA",
+    "state": "New-York",
+    "city": "New-York",
+    "zip": "myZip2"
+  }
+}
+# Add promocode
+PUT :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/promocode?order_id=10&promoCode=ABC1
+
+# Payment order
+POST :DEV_BASE_ORDERS_URL3:URL_SUFFIX/order/pay?order_id=123
+
+# ======================[Service Orders END]=======================================
+
+# ======================= Products =======================
+
+# Get all products
+GET :DEV_BASE_ORDERS_URL3:URL_SUFFIX/products
+

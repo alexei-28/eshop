@@ -1,0 +1,22 @@
+server:
+  port: 8092
+  servlet:
+    contextPath: /api/v1
+
+spring:
+  application:
+    name: E-shop orders
+    version: 1.0.0
+  datasource:
+    url: jdbc:h2:file:./db/eshop_orders.h2.db.mv.db
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate.ddl-auto: update
+  h2: # default db. Open web page to H2 db -> http://localhost:8090/h2-console
+    console:
+      enabled: true
+  http:
+    converters:
+      preferred-json-mapper: gson

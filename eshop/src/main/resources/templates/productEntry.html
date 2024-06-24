@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${appName}">Category template title</title>
+    <link th:href="@{/public/style.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <h3 th:text="*{title}"/>
+    <form method="post" action="#" th:object="${productEntry}" th:action="@{/productEntry}">
+        <input type="hidden" id="id" th:field="*{product.id}"/>
+        <input type="text" placeholder="Name" id="name" th:field="*{product.name}" th:disabled="${isView}"/>
+        <input type="hidden" id="created" th:field="*{product.created}"/>
+        <textarea placeholder="Description" rows="5" id="description"
+                  th:field="*{product.description}" th:disabled="${isView}"></textarea>
+        <input type="number" placeholder="Price" id="price" th:field="*{product.price}" th:disabled="${isView}"/>
+        <input type="text" placeholder="Currency" id="currency" th:field="*{product.currency}" th:disabled="${isView}"/>
+        <input type="text" placeholder="Images URL(separate by comma)" id="images" th:field="*{product.images}" th:disabled="${isView}"/>
+        <input type="number" placeholder="Quantity" id="quantity" th:field="*{quantity}" th:disabled="${isView}"/>
+        <input th:type="${isView} ? hidden : submit" value="Submit"/>
+        <br/>
+        <p th:if="${addProductError}" th:text="${addProductError}" class="error"></p>
+    </form>
+</div>
+</body>
+</html>

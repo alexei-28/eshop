@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.0.M4'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'ru.otus.software_architect'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+processResources {
+	filesMatching('application.yml') {
+		expand(project.properties)
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation 'com.google.code.gson:gson:2.7'
+	implementation 'com.h2database:h2'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
+	implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+	implementation('com.squareup.retrofit2:retrofit:2.4.0')
+	implementation('com.squareup.retrofit2:converter-gson:2.4.0')
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

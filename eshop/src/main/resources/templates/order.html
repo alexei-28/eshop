@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${appName}">Order template title</title>
+    <link th:href="@{/public/style.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <h3 th:text="*{title}"/>
+    <form method="post" action="#" th:object="${order}" th:action="@{/order}">
+        <table>
+            <tr>
+                <td>Category:</td>
+                <div th:with="selectedCategoryId=${{order.category.id}}">
+                    <td>
+                        <select th:disabled="${isView}" id="category" name="category">
+                            <option value="">Choose your option</option>
+                            <option th:each="category : ${categoriesList}"
+                                    th:value="${category.id}"
+                                    th:utext="${category.name}"
+                                    th:selected="${category.id} == ${selectedCategoryId}"
+                            />
+                        </select>
+                    </td>
+                </div>
+            </tr>
+        </table>
+        <input type="hidden" id="id" th:field="*{id}"/>
+        <input type="text" placeholder="Name" id="name" th:field="*{name}" th:disabled="${isView}"/>
+        <input type="hidden" id="created" th:field="*{created}"/>
+        <textarea placeholder="Description" rows="5" id="description"
+                  th:field="*{description}" th:disabled="${isView}"></textarea>
+        <input th:type="${isView} ? hidden : submit" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>

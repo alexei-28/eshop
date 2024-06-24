@@ -1,0 +1,45 @@
+logging:
+  level:
+    org.hibernate.SQL: debug
+
+# for Spring Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans, env, info, health, metrics
+
+server:
+  port: 8090
+  connection-timeout: 30000
+
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  application:
+    name: E-shop
+    version: ${version}
+  datasource:
+    url: jdbc:h2:file:./db/eshop.h2.db
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate.ddl-auto: update
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+  h2: # default db. Open web page to H2 db -> http://localhost:8090/h2-console
+    console:
+      enabled: true
+  http:
+    converters:
+      preferred-json-mapper: gson
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp

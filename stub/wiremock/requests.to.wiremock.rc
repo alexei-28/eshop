@@ -1,0 +1,43 @@
+# Help: https://github.com/pashky/restclient.el
+# More examples: https://github.com/pashky/restclient.el/blob/master/examples/httpbin
+# C-c C-v: same as C-c C-c, but doesn't switch focus to other window
+# C-c C-u: copy query under the cursor as a curl command
+
+# All Bridgem transport requests:
+# Separator between requests is symbol "#"
+# POST works too, entity just goes after an empty line. Same is for PUT.
+#
+# All SG transport requests:
+#
+# Response: CodeInvalidToken  , HTTP Status = 401
+# Response: CodeInvalidParams , HTTP Status = 401
+
+# Cloud ID's
+# LG for SG cloud ID(reciever): APA91bEcxrBEhNNSqNBtem0goMj212SVDGMHWkodi6uvRwNiAIkMBNKftet6HSeJwkmSdv2UdfwEL2t18cUdhMy04F2nQF8O0zf5NLO2mpkv5t1WY3PjEc7CJ68LJF4vYrclp_VS-MFY
+#
+# Site for testing http request/response: http://httpbin.org/
+
+
+# Test request to WireMock for tests
+
+# This is a useful way to check whether WireMock is running on the host and port you expect:
+GET http://localhost:8080/__admin
+
+# A fixed delay can be added to all stubs posting a JSON document 
+POST http://localhost:8080/__admin/settings
+
+{
+    "fixedDelay": 3000
+}
+
+# Get dictionary
+GET http://localhost:8080/api.php/dictionary
+
+
+# Get activity report
+GET http://localhost:8080/api.php/activity?token=2198ea363c8a2d4ddb89bf98fb3b8098&dateFrom=21.05.2018&dateUntil=27.05.2018
+
+# Delete command from WireMock. E.g. to temp disable return stub response.
+DELETE http://localhost:8080/__admin/mappings/0aa62075-d6c7-42b6-8328-b09de31339f0
+
+

@@ -1,0 +1,44 @@
+Note: Zhelev's IP: 172.27.202.135
+
+To check is WireMock was started:
+http://wiremock_host:port/__admin/
+
+1. Start standalone wiremock on specific port:
+
+java -jar wiremock-standalone-2.18.0.jar --port 8081 --enable-browser-proxying -verbose
+
+or
+java -jar wiremock-standalone-2.18.0.jar --port 8081 --proxy-all="http://sgdev.qsystemsglobal.com" -verbose
+
+or
+java -jar wiremock-standalone-2.18.0.jar --port 8081 --proxy-all="http://sgdev.qsystemsglobal.com" --enable-browser-proxying -verbose
+
+
+************************************************************************************************************
+
+Start emulator to forward all http traffic to production service:
+
+ java -jar wiremock-standalone-2.18.0.jar --port 8081 --enable-browser-proxying --proxy-all="http://sgdev.qsystemsglobal.com" -verbose
+ 
+
+************************************************************************************************************
+
+2. Как перенаправить (forward) весь http трафик через прокси (proxy) как на Андроид девайсе так и на эмуляторе?
+
+     1. На девайсе
+     - Settings->Wi-Fi
+     - Выбираем конктретную сеть (например QSystems WiFI)
+     - Долгий тап -> Modify network
+     - Show advanced options. Задаем ip и port прокси. Указать ОБЯЗАТЕЛЬНО реальный ip адрес, например мой: 172.27.202.135 и порт 8081
+     
+     2. На эмуляторе
+     Запускаем эмулятор (>= API 23) из консоли следующим образом (пример):
+     
+       emulator -avd Nexus_6_0_API_23_size_3_7 -http-proxy 172.27.202.135:8081
+       
+     либо: (not work)
+      1. Go to "Settings->More->Cellular network->Access point names" and edit the EXISTING Access Point.
+	 Set Proxy and Port. Rest not change.
+      2. In Developer Settings for configuring the device to use the legacy DHCP client instead of the new one. This must be configured to use the legacy one.
+
+************************************************************************************************************

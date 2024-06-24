@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${appName}">Template title</title>
+    <link th:href="@{/public/style.css}" rel="stylesheet"/>
+</head>
+<frameset cols="15%,*">
+    <frame src="navigator" name="navigator" scrolling="no" noresize/>
+    <frame src="welcome" name="main"/>
+</frameset>
+</html>

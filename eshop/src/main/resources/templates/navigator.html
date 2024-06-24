@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>Dictionaries:</h2>
+<p><a href="/categories" th:target="main">Categories</a></p>
+<p><a href="/users" th:target="main">Users</a></p>
+<p><a href="/cart" th:target="main">Cart</a></p>
+<p><a href="/orders" th:target="main">Orders</a></p>
+<p>&nbsp;</p>
+<!-- By default logout is only triggered with a POST request to "/logout" -->
+<form action="#" th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout"/>
+</form>
+<p/>
+<p>Logging by:</p>
+<p th:text="${username}"></p>
+</body>
+</html>

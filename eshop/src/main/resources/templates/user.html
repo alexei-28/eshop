@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${appName}">Category template title</title>
+    <link th:href="@{/public/style.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <h3 th:text="*{title}"/>
+    <form method="post" action="#" th:object="${user}" th:action="@{/user}">
+        <table cellspacing="10">
+            <tr align="center">
+                <td><input type="hidden" id="id" th:field="*{id}"/></td>
+            </tr>
+            <tr align="center">
+                <td align="right"><label for="username">User name</label></td>
+                <td align="left"><input type="text" placeholder="username" id="username" th:field="*{username}"
+                                        th:readonly="true"/>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="hidden" id="password" th:field="*{password}"/></td>
+            </tr>
+            <tr align="left">
+                <td align="right"><label for="active">Active</label></td>
+                <td align="left"><input th:type="${isActiveHide} ? hidden : checkbox" placeholder="active"
+                                        id="active"
+                                        th:field="*{active}"
+                                        th:readonly="${isView}"/></td>
+            </tr>
+            <tr align="center">
+                <td align="right"><label for="roles">Roles</label></td>
+                <td align="left"><input type="text" placeholder="roles" id="roles" th:field="*{roles}"
+                                        th:readonly="true"/>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="hidden" id="created" th:field="*{created}"/></td>
+            </tr>
+        </table>
+        <input th:type="${isView} ? hidden : submit" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>

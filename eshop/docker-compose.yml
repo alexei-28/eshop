@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  server:
+    image: asubscriber/eshop:1.0.1
+    build:
+      context: .
+
+    network_mode: host
+    ports:
+      - 8090:8090

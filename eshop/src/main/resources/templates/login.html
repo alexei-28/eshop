@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${appName}">Template title</title>
+    <link th:href="@{/public/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="container">
+    <h2 align="center">Login</h2>
+    <form th:action="@{/login.html}" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="a_subscriber@mail.ru" autofocus="autofocus"/>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" value="1"/>
+        <input id="submit" type="submit" value="Log in"/>
+    </form>
+    <p>&nbsp;</p>
+    <p align="center"><a th:href="@{/registration.html}">Registration new user</a></p>
+    <p th:if="${loginError}" class="error">Wrong user or password</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'ru.otus.software_architect'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = 1.8
+
+processResources {
+	filesMatching('application.yml') {
+		expand(project.properties)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'com.google.code.gson:gson:2.7'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
+	implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+	implementation 'org.apache.activemq:activemq-broker'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-activemq'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -1,0 +1,42 @@
+{
+  "id": 1,
+  "username": "admin@admin.com",
+  "created": "2020-04-20T12:33:29.505+00:00",
+  "updated": null,
+  "productEntities": [
+    {
+      "quantity": 1,
+      "product": {
+        "id": 2,
+        "name": "Product name 1",
+        "description": "Product description 1",
+        "created": "2020-04-20T13:35:56.000+00:00",
+        "updated": null,
+        "price": 1.0,
+        "currency": "usd",
+        "images": [
+          "url_2",
+          "url_1"
+        ]
+      }
+    },
+    {
+      "quantity": 2,
+      "product": {
+        "id": 3,
+        "name": "Product name 2",
+        "description": "Product description 2",
+        "created": "2020-04-20T13:45:47.000+00:00",
+        "updated": null,
+        "price": 1.0,
+        "currency": "USD",
+        "images": [
+          "url_2",
+          "url_1"
+        ]
+      }
+    }
+  ],
+  "currency": "USD",
+  "totalAmount": 46.0
+}

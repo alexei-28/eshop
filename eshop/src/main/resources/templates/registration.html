@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${appName}">Template title</title>
+    <link th:href="@{/public/style.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div id="container">
+    <h2 align="center">Registration new user</h2>
+    <form th:action="@{/registration.html}" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" autofocus="autofocus"/>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
+        <label for="retypePassword">Retype password</label>
+        <input type="password" id="retypePassword" name="retypePassword"/>
+        <input id="submit" type="submit" value="Registration"/>
+    </form>
+    <p th:if="${registrationError}" th:text="${registrationError}" class="error"></p>
+</div>
+</body>
+</html>
