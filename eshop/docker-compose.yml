@@ -2,7 +2,7 @@ version: "3"
 
 services:
   server:
-    image: asubscriber/eshop:1.0.1
+    image: asubscriber/eshop:1.0.2
     build:
       context: .
 
