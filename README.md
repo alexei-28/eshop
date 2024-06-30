@@ -1,6 +1,6 @@
 # E-shop
 
-OTUS: Software architect - eshop
+OTUS: Software architect - eshop (Spring Boot)
 
 ------------------------------------------------------------------------------------------
 Download abd install Gradle wrapper 7.5.1
