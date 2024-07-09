@@ -1,8 +1,6 @@
 package ru.otus.software_architect.eshop.repo;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import ru.otus.software_architect.eshop.model.Role;
 import ru.otus.software_architect.eshop.model.User;
 

@@ -25,12 +25,13 @@ public class CategoriesController {
 
     private static Logger logger = LogManager.getLogger(CategoriesController.class);
 
-    // If class has only one constructor then @Autowired wiil execute automatically
+    // If class has only one constructor then @Autowired will execute automatically
     public CategoriesController(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
         //createStubCategoryList();
     }
 
+    // http://127.0.0.1:8090/categories
     @GetMapping("/categories")
     public String getAllCategories(Model model) {
         model.addAttribute("categoriesList", categoryRepository.findAll());
@@ -38,8 +39,9 @@ public class CategoriesController {
         return "categories";
     }
 
+    // http://127.0.0.1:8090/category/add
     @RequestMapping("category/add")
-    public String addtCategory(Model model) {
+    public String addCategory(Model model) {
         logger.info("addCategory");
         model.addAttribute("isAdd", true);
         model.addAttribute("category", new Category());
@@ -48,6 +50,7 @@ public class CategoriesController {
         return "category";
     }
 
+    // e.g. http://127.0.0.1:8090/category/view/2
     @RequestMapping("category/view/{id}")
     public String viewCategory(@PathVariable("id") int id, Model model) {
         Optional<Category> category = categoryRepository.findById(id);
@@ -57,6 +60,7 @@ public class CategoriesController {
         model.addAttribute("title", "View Category");
         return "category";
     }
+
 
     @RequestMapping("category/edit/{id}")
     public String editCategory(@PathVariable("id") int id, Model model) {

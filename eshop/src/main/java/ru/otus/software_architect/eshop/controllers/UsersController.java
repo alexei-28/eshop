@@ -17,7 +17,9 @@ import ru.otus.software_architect.eshop.model.ViewMode;
 import ru.otus.software_architect.eshop.repo.UserRepository;
 
 import java.util.*;
-
+/*-
+    You can register a new user via login screen.
+ */
 @Controller
 public class UsersController {
     @Value("${spring.application.name}")
@@ -36,7 +38,7 @@ public class UsersController {
         logger.info("UsersController:");
         this.userRepository = userRepository;
         if (userRepository.findByUsername("admin@admin.com") == null) {
-            logger.info("UsersController: create_admin_user: admin@admin.com");
+            logger.info("UsersController: create default admin user: admin@admin.com");
             // Create admin user
             User user = new User();
             user.setUsername("admin@admin.com");

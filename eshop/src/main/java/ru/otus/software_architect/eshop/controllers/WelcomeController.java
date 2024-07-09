@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class WelcomeContoller {
+public class WelcomeController {
     @Value("${spring.application.name}")
     private String appName;
     @Value("${spring.application.version}")
