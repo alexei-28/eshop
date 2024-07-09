@@ -5,7 +5,7 @@ Online education: https://otus.ru/
 
 Course: Software architect
 
-Appliction name: e-shop (online shop)
+Application name: e-shop (online shop)
 
 version: 1.0.2
 

@@ -34,6 +34,7 @@ public class CartController {
 
     private static Logger logger = LogManager.getLogger(CartController.class);
 
+    // Get cart by GET method
     @GetMapping("/cart")
     public String getCartDetails(Model model) {
         currentUser = userRepository.findByUsername(UserService.getCurrentUserName());
@@ -60,7 +61,7 @@ public class CartController {
         return "productEntry";
     }
 
-    // Add product to cart
+    // Add product to cart by POST method
     @PostMapping(value = "/productEntry")
     public String submitProductEntry(ProductEntry productEntry, Model model) {
         try {
