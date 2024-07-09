@@ -6,7 +6,7 @@ plugins {
 }
 
 // run app :
-// gradlew bootRun
+// ./gradlew bootRun
 
 group = 'ru.otus.software_architect'
 version = '1.0.2'
