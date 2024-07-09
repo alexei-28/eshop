@@ -10,7 +10,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.Date;
-
+/*-
+    Open on the next address:
+    http://127.0.0.1:8090/
+ */
 @SpringBootApplication
 @EnableAsync
 public class EshopApplication {
