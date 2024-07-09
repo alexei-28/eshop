@@ -14,9 +14,7 @@ import java.util.Date;
     Open on the next address:
     http://127.0.0.1:8090/
 
-    Credentials:
-    login: admin@admin.com
-    pass: admin@admin.com
+    Default admin credentials(admin@admin.com) set in the class UsersController.
  */
 @SpringBootApplication
 @EnableAsync

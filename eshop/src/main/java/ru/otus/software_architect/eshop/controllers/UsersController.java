@@ -31,7 +31,7 @@ public class UsersController {
 
     private static Logger logger = LogManager.getLogger(UsersController.class);
 
-    // If class has only one constructore then @Autowired wiil execute automatically
+    // If class has only one constructor then @Autowired will execute automatically
     public UsersController(UserRepository userRepository) {
         logger.info("UsersController:");
         this.userRepository = userRepository;
