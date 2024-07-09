@@ -50,6 +50,7 @@ public class UsersController {
         }
     }
 
+    // http://127.0.0.1:8090/users
     @GetMapping("/users")
     public String getAllUsers(Model model) {
         logger.info("getAllUsers: model = " + model);
