@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import ru.otus.software_architect.eshop.service.TransportService;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;

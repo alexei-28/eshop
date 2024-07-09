@@ -9,11 +9,9 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import ru.otus.software_architect.eshop.service.TransportService;
 import ru.otus.software_architect.eshop.util.GsonUtil;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class RestClientFactory {
